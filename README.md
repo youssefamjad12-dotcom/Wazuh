@@ -1,69 +1,199 @@
-# install Wazuh 
-````
-# Wazuh Installation on Ubuntu Server
-
-## Server Specifications
+Install Wazuh
+Wazuh Installation on Ubuntu Server
+Server Specifications
 
 This guide is for a single-server Wazuh installation.
 
-| Resource | Specification |
-|---|---|
-| OS | Ubuntu Server 22.04 / 24.04 LTS |
-| CPU | 4 cores |
-| RAM | 8 GB |
-| Disk | 50 GB+ recommended |
-| Architecture | AMD64 / x86_64 |
-| Installation | Wazuh All-in-One |
+Resource	Specification
+OS	Ubuntu Server 22.04 / 24.04 LTS
+CPU	4 cores
+RAM	8 GB
+Disk	50 GB+ recommended
+Architecture	AMD64 / x86_64
+Installation	Wazuh All-in-One
 
 The server will contain:
 
-- Wazuh Manager
-- Wazuh Indexer
-- Wazuh Dashboard
-- Filebeat
+Wazuh Manager
 
----
+Wazuh Indexer
 
-# 1. Update Ubuntu
+Wazuh Dashboard
+
+Filebeat
+
+0. Prerequisite — Install Ubuntu Server First
+
+Before starting the Wazuh installation, you must have a working Ubuntu Server.
+
+If you are a student and you do not know how to create a VMware virtual machine or install Ubuntu Server, use the following detailed guide:
+
+Ubuntu Server Installation on VMware:
+
+{"fallbackMarkdown":"Ubuntu Server Installation on VMware — GitHub Repository","reference":{"matched_text":"","prefix":null,"start_idx":1177,"end_idx":1295,"safe_urls":[],"refs":[],"alt":"Ubuntu Server Installation on VMware — GitHub Repository","prompt_text":null,"type":"url","title":"Ubuntu Server Installation on VMware — GitHub Repository","item":{"title":"Ubuntu Server Installation on VMware — GitHub Repository","url":"https://github.com/youssefamjad12-dotcom/Ubunto-server/?utm_source=chatgpt.com","attribution":"github.com","pub_date":null,"snippet":null,"attribution_segments":null,"supporting_websites":[],"refs":[],"hue":null,"attributions":null},"logo":null,"layout":null},"showLoginRequiredCard":false}
+
+The guide explains step-by-step how to:
+
+Download the Ubuntu Server ISO
+
+Create a VMware virtual machine
+
+Configure the VM CPU
+
+Configure 8 GB RAM
+
+Configure the virtual disk
+
+Configure NAT or Bridged networking
+
+Attach the Ubuntu Server ISO
+
+Start the virtual machine
+
+Install Ubuntu Server
+
+Configure the hostname
+
+Configure the network
+
+Create the Ubuntu user
+
+Install OpenSSH Server
+
+Reboot Ubuntu
+
+Check the IP address
+
+Verify CPU, RAM, disk, network, and SSH
+
+Follow that guide until you have successfully booted into Ubuntu Server.
+
+Required Ubuntu VM Configuration
+
+For this Wazuh installation, configure the VMware VM approximately as follows:
+
+VM Name:       Wazuh-Server
+Operating OS:  Ubuntu Server 24.04 LTS
+CPU:           4 cores
+RAM:           8 GB
+Disk:          100 GB recommended
+Network:       Bridged or NAT
+Hostname:      wazuh-server
+Architecture:  AMD64 / x86_64
+
+
+After Ubuntu Server is installed, login to the server and continue with Step 1 below.
+
+1. Update Ubuntu
 
 Login to the Ubuntu server.
 
 Become root:
 
-```bash
 sudo -i
-````
 
- Update the system:
 
-```
+Update the package list:
+
 apt update
+
+
+Upgrade installed packages:
+
 apt upgrade -y
-```
 
- Install basic packages:
 
-```
-apt install -y curl wget gnupg apt-transport-https unzip vim net-tools
-```
+Wait until the update finishes.
 
- Reboot:
+2. Check Ubuntu Version
 
-```
-reboot
-```
+Run:
 
- Reconnect after the reboot:
+cat /etc/os-release
 
-```
-ssh user@SERVER_IP
-```
 
- Become root again:
+You should see Ubuntu.
 
-```
+Example:
+
+NAME="Ubuntu"
+VERSION="24.04.x LTS"
+
+3. Check CPU
+
+Run:
+
+nproc
+
+
+Expected:
+
+4
+
+4. Check RAM
+
+Run:
+
+free -h
+
+
+You should have approximately:
+
+8 GB
+
+5. Check Disk
+
+Run:
+
+df -h
+
+
+Make sure enough disk space is available.
+
+Recommended:
+
+50 GB+
+
+6. Check Network
+
+Check the IP address:
+
+hostname -I
+
+
+Example:
+
+192.168.1.50
+
+
+Check Internet connectivity:
+
+ping -c 4 google.com
+
+
+If you receive replies, the Internet connection is working.
+
+7. Continue With Wazuh Installation
+
+Once the following are working:
+
+[✓] Ubuntu Server installed
+[✓] 4 CPU cores
+[✓] 8 GB RAM
+[✓] 50 GB+ disk
+[✓] Network working
+[✓] Internet working
+[✓] Ubuntu login working
+
+
+continue with the Wazuh installation.
+
+Become root if you are not already root:
+
 sudo -i
-```
+
+
+Then continue with the next Wazuh installation step.
 
 ---
 
