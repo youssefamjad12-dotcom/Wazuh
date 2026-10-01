@@ -130,7 +130,7 @@ Static hostname: wazuh-server
  Run:
 
 ```
-hostname -I
+ip a
 ```
 
  Example:
@@ -145,37 +145,7 @@ hostname -I
 
 ---
 
- # 5\. Configure /etc/hosts
-
- Edit the hosts file:
-
-```
-nano /etc/hosts
-```
-
- Add your server IP:
-
-```
-192.168.1.50 wazuh-server
-```
-
- Replace `192.168.1.50` with your actual IP.
-
- Save:
-
-```
-CTRL + O
-ENTER
-CTRL + X
-```
-
- Test:
-
-```
-ping -c 2 wazuh-server
-```
-
----
+ 
 
  # 6\. Install Wazuh All-in-One
 
