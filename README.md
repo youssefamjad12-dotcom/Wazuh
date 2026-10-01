@@ -1,4 +1,4 @@
-#install Wazuh 
+# install Wazuh 
 ````
 # Wazuh Installation on Ubuntu Server
 
