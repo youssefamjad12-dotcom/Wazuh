@@ -1,6 +1,4 @@
-# Wazuh
-Sure — here is the **entire Markdown file in one copy box**. You can copy it directly and save it as `wazuh-ubuntu-install.md`.
-
+#install Wazuh 
 ````
 # Wazuh Installation on Ubuntu Server
 
@@ -338,7 +336,7 @@ ss -lntp | grep -E '443|1514|1515|55000|9200'
 
 ---
 
- # 14\. Configure Firewall(optional)
+ # 14\. Configure Firewall (optional)
 
  Check UFW:
 
